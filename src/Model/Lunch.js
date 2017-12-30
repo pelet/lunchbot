@@ -51,7 +51,7 @@ const getData = () => {
 
 const saveData = (data) => {
     try {
-        fs.writeFile(process.env.DB_FILE, JSON.stringify(data, null, '\t'), 'utf8', (err) => {
+        fs.writeFile(process.env.DB_FILE, JSON.stringify(data, null, 2), 'utf8', (err) => {
             if (err) {
                 console.log("Error writing file: " + err)
                 throw err

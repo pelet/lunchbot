@@ -22,11 +22,16 @@ Slack App to help out with lunch decisions
 
 ## To Run
 
-#### Set the following environment variables with your own Slack App credentials
+#### Set the following environment variables with your own Slack App credentials and other settings
 
 CLIENT_ID 
+
 CLIENT_SECRET
+
 VERIFICATION_TOKEN
+
 PORT
+
 TEAM_ID
+
 DB_FILE
