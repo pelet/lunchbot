@@ -1,24 +1,21 @@
+'use strict'
+
 const express = require('express')
 const request = require('request')
+const bodyParser = require('body-parser')
+const LunchService = require('./Controller/LunchService')
 
 const clientId = process.env.CLIENT_ID
 const clientSecret = process.env.CLIENT_SECRET
 const PORT = process.env.PORT
 
-var app = express()
-
-app.listen(PORT, () => {
-    console.log("Lunch bot listening on port " + PORT)
-})
-
-app.get('/', (req, res) => {
-    res.send('Nothing here: ' + req.url)
-})
+const app = express()
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/lunchbot/oauth', (req, res) => {
     if (!req.query.code) {
         res.status(500)
-        res.send("Error")
+        res.send('Error')
     } else {
         request({
             url: 'https://slack.com/api/oauth.access',
@@ -31,7 +28,7 @@ app.get('/lunchbot/oauth', (req, res) => {
 
         }, (error, response, body) => {
             if (error) {
-                console.log(error)
+                console.log('Error Slack oauth: ' + error)
             } else {
                 res.json(body)
             }
@@ -39,7 +36,10 @@ app.get('/lunchbot/oauth', (req, res) => {
     }
 })
 
-
 app.post('/lunchbot', (req, res) => {
-    res.send('Lunchbot here!')
+    LunchService.handleRequest(req, res)
+})
+
+app.listen(PORT, () => {
+    console.log('Lunch bot listening on port ' + PORT)
 })
