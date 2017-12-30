@@ -8,6 +8,10 @@
     "start:dev": "node -r dotenv/config ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pelet/lunchbot.git"
+  },
   "author": "Pelet",
   "license": "ISC",
   "dependencies": {

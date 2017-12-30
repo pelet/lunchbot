@@ -1,15 +1,32 @@
 # lunchbot
-Slack App which gives lunch suggestions
+Slack App to help out with lunch decisions
 
 ## Commands
 #### /lunchbot help
--list all available commands
+-Show all available commands
 
-#### /lunchbot hmm
--Suggests a restaurant randomly from the saved restaurants
+#### /lunchbot suggest (optional)
+-Let Lunch Service suggest a restaurant
+
+#### /lunchbot list
+-List all restaurants with menus
+
+#### /lunchbot get [name_of_restaurant]
+-Get the menu for the restaurant
 
 #### /lunchbot add [name_of_restaurant] [menu URL]
--add the restaurant with an optional menu URL
+-Add a restaurant with an optional menu URL
 
 #### /lunchbot remove [name_of_restaurant]
--remove the restaurant
+-Remove the restaurant
+
+## To Run
+
+#### Set the following environment variables with your own Slack App credentials
+
+CLIENT_ID 
+CLIENT_SECRET
+VERIFICATION_TOKEN
+PORT
+TEAM_ID
+DB_FILE
