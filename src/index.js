@@ -30,7 +30,6 @@ app.get('/lunchbot/oauth', (req, res) => {
                 client_secret: clientSecret
             },
             method: 'GET',
-
         }, (error, response, body) => {
             if (error) {
                 console.log('Error Slack oauth: ' + error)
@@ -48,3 +47,5 @@ app.post('/lunchbot', (req, res) => {
 app.listen(PORT, () => {
     console.log('Lunch bot listening on port ' + PORT)
 })
+
+module.exports = app
