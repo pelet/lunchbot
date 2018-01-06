@@ -54,13 +54,8 @@ class Lunch {
     
     saveData(data) {
         try {
-            fs.writeFile(this.file, JSON.stringify(data, null, 2), 'utf8', (err) => {
-                if (err) {
-                    console.log("Error writing file: " + err)
-                    throw err
-                }
-              })
-              return true
+            fs.writeFileSync(this.file, JSON.stringify(data, null, 2), 'utf8')
+            return true
         } catch(e) {
             console.log("Error writing file: " + e)
             return false
