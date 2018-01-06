@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/index.js",
     "start:dev": "node -r dotenv/config ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha test/**/**Test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0"
+    "dotenv": "^4.0.0",
+    "mocha": "^4.1.0"
   }
 }

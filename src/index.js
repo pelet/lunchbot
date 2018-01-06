@@ -4,13 +4,18 @@ const express = require('express')
 const request = require('request')
 const bodyParser = require('body-parser')
 const LunchService = require('./Controller/LunchService')
+const Lunch = require('./Model/Lunch')
+const Config = require('./Common/Config')
 
-const clientId = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
-const PORT = process.env.PORT
+const clientId = Config.slack.CLIENT_ID
+const clientSecret = Config.slack.CLIENT_SECRET
+const PORT = Config.PORT
+const dbFile = Config.DB_FILE
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
+
+const lunchService = new LunchService(new Lunch(dbFile))
 
 app.get('/lunchbot/oauth', (req, res) => {
     if (!req.query.code) {
@@ -37,7 +42,7 @@ app.get('/lunchbot/oauth', (req, res) => {
 })
 
 app.post('/lunchbot', (req, res) => {
-    LunchService.handleRequest(req, res)
+    lunchService.handleRequest(req, res)
 })
 
 app.listen(PORT, () => {
